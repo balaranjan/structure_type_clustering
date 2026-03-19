@@ -227,15 +227,15 @@ python cif_clustering.py \
 ### d/d_min Calculation
 
 For each atomic site in a CIF:
-1. Extract all atomic positions
-2. Compute distances from a reference point to all other sites
+1. Extract all neighbor positions around each site
+2. Compute distances from the center to all other neighbors
 3. Sort distances and select the first `n` neighbors
 4. Normalize all distances by dividing by the minimum distance: `d /= d_min`
 5. Result: normalized distance array where all values ≥ 1.0
 
 ### Feature Aggregation
 
-Individual site features are aggregated into a single histogram per CIF:
+Individual site features (d/d_min values) are aggregated into a single histogram per CIF:
 - All site d/d_min values are combined
 - Histogram with configurable bin count is created
 - Histogram counts are used as the feature vector for clustering
@@ -246,34 +246,6 @@ Uses scikit-learn's `AgglomerativeClustering`:
 - **Linkage methods**: ward (minimizes variance), complete (max distance), average (mean distance)
 - **Distance threshold**: Ensures full tree computation
 - **Dendrogram**: Visualizes the clustering hierarchy with structure type labels
-
-## Workflow Diagram
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      Input                                  │
-│  --cif-dir (folder)  OR  --csv (selected files)            │
-└───────────────────────┬─────────────────────────────────────┘
-                        │
-                        ▼
-            ┌───────────────────────┐
-            │  Validate CIF Files   │
-            └───────────┬───────────┘
-                        │
-        ┌───────────────┴───────────────┐
-        │                               │
-        ▼                               ▼
-┌───────────────┐            ┌──────────────────┐
-│ extract_features│            │   cluster      │
-│   (or both)    │            │  (or both)      │
-└───────┬───────┘            └────────┬─────────┘
-        │                             │
-        ▼                             ▼
-┌───────────────┐            ┌──────────────────┐
-│ .npz files   │            │ dendrogram      │
-│ error log    │            │ results CSV     │
-└───────────────┘            └──────────────────┘
-```
 
 ## Troubleshooting
 
@@ -338,7 +310,3 @@ This tool is provided as-is for research purposes.
 
 Feel free to submit issues and enhancement requests.
 
-## References
-
-- **Agglomerative Clustering**: [scikit-learn documentation](https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering)
-- **CIF Format**: [International Union of Crystallography](https://www.iucr.org/resources/cif)
