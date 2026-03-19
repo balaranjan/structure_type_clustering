@@ -4,13 +4,9 @@ A unified Python script for performing structural analysis and hierarchical clus
 
 ## Features
 
-- **Feature Extraction**: Calculates d/d_min values for atomic site neighborhoods
-- **Histogram Generation**: Converts raw features into comparable histograms
 - **Hierarchical Clustering**: Groups similar structures using agglomerative clustering
 - **Visualization**: Generates dendrograms and individual structure plots
-- **Parallel Processing**: Multi-process feature extraction for large datasets
 - **Site Filtering**: Optionally analyze only specific element types
-- **Incremental Updates**: Skip already-processed files for efficiency
 
 ## Installation
 
