@@ -1,6 +1,6 @@
 # CIF Clustering Analysis Tool
 
-A unified Python script for performing structural analysis and hierarchical clustering on CIF (Crystallographic Information File) files. This tool extracts d/d_min (normalized interatomic distances) features from atomic structures and clusters similar structures together.
+A Python script for performing structural analysis and hierarchical clustering on CIF (Crystallographic Information File) files. This tool extracts d/d_min (normalized interatomic distances) features from atomic structures and clusters similar structures together.
 
 ## Features
 
@@ -27,6 +27,8 @@ pip install numpy pandas matplotlib scipy scikit-learn cifkit
 ## Usage
 
 ### Basic Usage
+
+To perform the analysis, you need a folder with cifs with different structure-types (one cif per structure-type).
 
 ```bash
 # Process all CIFs in a folder (extract features + cluster)
